@@ -1,2 +1,1 @@
-# Comment
 print("Hello CI")
