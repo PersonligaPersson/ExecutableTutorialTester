@@ -9,8 +9,6 @@ jobs:
   if_merged:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    with:
-        path: ${{ github.workspace }}
     steps:
       - run: |
-          python ./report-automation.py          
+          python ./${{ github.workspace }}/report-automation.py          
