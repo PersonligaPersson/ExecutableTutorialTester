@@ -11,5 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ls ./
-          echo pwd
+          ls ./
+          pwd
