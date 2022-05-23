@@ -20,11 +20,16 @@ print(f"reviews res: {response.status_code}")
 res = response.json()
 
 contributor_string = ""
-# Store the names of all those who's reviewed the PR
-for i in range(len(res)-1):
-    contributor_string += f"{res[i].user.login}, "
-contributor_string = contributor_string[:len(contributor_string)-2]
-contributor_string += f" and {res[len(res)-1].user.login}"
+if len(res) == 0:
+    contributor_string = "no one"
+elif len(res) == 1:
+    contributor_string = res[0].user.login
+else:
+    # Store the names of all those who's reviewed the PR
+    for i in range(len(res)-1):
+        contributor_string += f"{res[i].user.login}, "
+    contributor_string = contributor_string[:len(contributor_string)-2]
+    contributor_string += f" and {res[len(res)-1].user.login}"
 
 
 # Start by fetching data from the repository
