@@ -1,6 +1,6 @@
 print("Running the report automation script")
 
-import requests 
+import requests
 import numpy as np
 import matplotlib.pyplot as plt
 from reportlab.pdfgen import canvas
@@ -24,7 +24,7 @@ top_contributors = []
 for i in range(5):
   top_contributors.append({
       "name": res[i]["author"]["login"],
-      "commits": res[i]["total"]      
+      "commits": res[i]["total"]
       })
 
 # Then set up a bar plot show the top contributors.
@@ -35,18 +35,18 @@ for item in top_contributors:
   height.append(item["commits"])
 
 x_pos = np.arange(len(bars))
- 
+
 # Create bars and choose color
 plt.bar(x_pos, height, color = (0.5,0.1,0.5,0.6))
- 
+
 # Add title and axis names
 plt.title('Top Contributors')
 plt.xlabel('Contributors')
 plt.ylabel('Total Commits')
- 
+
 # Create names on the x axis
 plt.xticks(x_pos, bars)
- 
+
 # Show graph
 #plt.show()
 
@@ -70,38 +70,38 @@ pdf = canvas.Canvas(fileName)
 pdfmetrics.registerFont(
     TTFont('arial', 'arial.ttf')
 )
-  
+
 # setting the title of the document
 pdf.setTitle(documentTitle)
 
-# creating the title by setting it's font 
+# creating the title by setting it's font
 # and putting it on the canvas
 pdf.setFont("arial", 26)
 pdf.drawCentredString(300, 770, title)
 
-# creating the subtitle by setting it's font, 
+# creating the subtitle by setting it's font,
 # colour and putting it on the canvas
 pdf.setFont("arial", 16)
 pdf.drawCentredString(290, 720, subTitle)
 
 # drawing a line
 pdf.line(30, 710, 550, 710)
-  
+
 # creating a multiline text using
 # textline and for loop
 text = pdf.beginText(40, 680)
 text.setFont("arial", 11)
 #text.setFillColor(colors.red)
-  
+
 for line in textLines:
     text.textLine(line)
-      
+
 pdf.drawText(text)
 
-# drawing a image at the 
+# drawing a image at the
 # specified (x.y) position
 #pdf.drawInlineImage(image, 130, 400)
 pdf.drawImage(image,20,300, 480, 360)
-  
+
 # saving the pdf
 pdf.save()
