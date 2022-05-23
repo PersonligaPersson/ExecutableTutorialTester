@@ -28,7 +28,7 @@ else:
     # Otherwise we filter out the unique names.
     for review in res:
         user = review['user']['login']
-        if user not in contributors
+        if user not in contributors:
             contributors.append(user)
 
     # Then format the output string
