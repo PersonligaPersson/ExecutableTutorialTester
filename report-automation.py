@@ -10,7 +10,7 @@ from reportlab.lib import colors
 import sys
 
 # Get the PR number from the github action
-pr_id = argv[1]; # 0 is the file name
+pr_id = sys.argv[1]; # 0 is the file name
 
 # Then fetch the reviews for that PR
 url = f"https://api.github.com/repos/KTH/devops-course/pulls/${pr_id}/reviews"
