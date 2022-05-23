@@ -17,10 +17,10 @@ for arg in sys.argv:
     print(arg)
 
 # Then fetch the reviews for that PR
-url = f"https://api.github.com/repos/KTH/devops-course/pulls/${pr_id}/reviews"
+url = f"https://api.github.com/repos/PersonligaPersson/ExecutableTutorialTester/pulls/{pr_id}/reviews"
 print(f"Requesting on the url: ${url}")
 response = requests.get(url)
-print(f"reviews res: ${response.status_code}")
+print(f"reviews res: {response.status_code}")
 res = response.json()
 print(res)
 
