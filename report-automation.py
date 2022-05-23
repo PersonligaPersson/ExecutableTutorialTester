@@ -115,7 +115,7 @@ pdf.line(30, 710, 550, 710)
 
 # creating a multiline text using
 # textline and for loop
-text = pdf.beginText(40, 680)
+text = pdf.beginText(40, 620)
 text.setFont("arial", 11)
 #text.setFillColor(colors.red)
 
