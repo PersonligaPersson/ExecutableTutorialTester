@@ -14,6 +14,7 @@ pr_id = sys.argv[1]; # 0 is the file name
 
 # Then fetch the reviews for that PR
 url = f"https://api.github.com/repos/KTH/devops-course/pulls/${pr_id}/reviews"
+print(f"Requesting on the url: ${url}")
 response = requests.get(url)
 print(f"reviews res: ${response.status_code}")
 res = response.json()
