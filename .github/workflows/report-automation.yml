@@ -22,6 +22,6 @@ jobs:
       - name: stage new files
         run: git add .
       - name: commit new files
-        run: git commit -m "Auto: Committing report file and dependencies."
+        run: git commit -m "Committing new files"
       - name: push to master
         run: git push origin HEAD:master
