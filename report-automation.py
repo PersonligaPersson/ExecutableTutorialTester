@@ -18,19 +18,14 @@ print(f"Requesting on the url: ${url}")
 response = requests.get(url)
 print(f"reviews res: {response.status_code}")
 res = response.json()
-print(res)
 
-# Start by fetching all closed pull requests
-#url = "https://api.github.com/repos/KTH/devops-course/pulls?state=closed"
-#response = requests.get(url)
-#print(f"pulls ")
+contributor_string = ""
+# Store the names of all those who's reviewed the PR
+for i in range(len(res)-1):
+    contributor_string += f"{res[i].user.login}, "
+contributor_string = contributor_string[:len(contributor_string)-2]
+contributor_string += f" and {res[len(res)-1].user.login}"
 
-# Fetch and print the community profile metrics
-#url = "https://api.github.com/repos/KTH/devops-course/pulls/943732529/reviews" # TODO: Do we have to iterate all ids?
-#response = requests.get(url)
-#print(f"reviews res: {response.status_code}")
-#res = response.json()
-#print(res)
 
 # Start by fetching data from the repository
 # Todo: Change this to the current repo we're working with
@@ -106,6 +101,9 @@ pdf.drawCentredString(300, 770, title)
 # colour and putting it on the canvas
 pdf.setFont("arial", 16)
 pdf.drawCentredString(290, 720, subTitle)
+
+# Present the reviewers
+pdf.drawText(f"This feature was reviewed by: {contributor_string}")
 
 # drawing a line
 pdf.line(30, 710, 550, 710)
