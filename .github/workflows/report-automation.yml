@@ -15,8 +15,13 @@ jobs:
           pip install requests
           pip install numpy
           pip install matplotlib
-          pip install reportlab
       - name: checkout repo
         uses: actions/checkout@v2.3.4
       - run: |
           python report-automation.py
+      - name: stage new files
+        run: git add .
+      - name: commit new files
+        run: git commit -m "Auto: Committing report file and dependencies."
+      - name: push to master
+        run: git push origin HEAD:master
