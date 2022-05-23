@@ -7,13 +7,35 @@ from reportlab.pdfgen import canvas
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from reportlab.lib import colors
+import sys
 
+# Get the PR number from the github action
+pr_id = argv[1]; # 0 is the file name
+
+# Then fetch the reviews for that PR
+url = f"https://api.github.com/repos/KTH/devops-course/pulls/${pr_id}/reviews"
+response = requests.get(url)
+print(f"reviews res: ${response.status_code}")
+res = response.json()
+prin(res)
+
+# Start by fetching all closed pull requests
+#url = "https://api.github.com/repos/KTH/devops-course/pulls?state=closed"
+#response = requests.get(url)
+#print(f"pulls ")
+
+# Fetch and print the community profile metrics
+#url = "https://api.github.com/repos/KTH/devops-course/pulls/943732529/reviews" # TODO: Do we have to iterate all ids?
+#response = requests.get(url)
+#print(f"reviews res: {response.status_code}")
+#res = response.json()
+#print(res)
 
 # Start by fetching data from the repository
 # Todo: Change this to the current repo we're working with
 url = "https://api.github.com/repos/KTH/devops-course/stats/contributors"
 response = requests.get(url)
-print("res: ", response.status_code)
+print(f"commits res: {response.status_code}")
 res = response.json()
 
 # Sort the contributors on the amount of commits.

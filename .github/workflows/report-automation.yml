@@ -5,7 +5,7 @@ on:
     types:
       - closed
     branches:
-      - 'master'
+      - master
 
 jobs:
   if_merged:
@@ -18,10 +18,10 @@ jobs:
           pip install numpy
           pip install matplotlib
           pip install reportlab
-      - name: checkout repo
+      - name: checkout repo, run script
         uses: actions/checkout@v2.3.4
       - run: |
-          python report-automation.py
+          python report-automation.py ${{ github.event.pull_request.number }}
       - name: configure user
         run: |
           git config --global user.email "max.e.persson@live.se"
