@@ -21,7 +21,7 @@ res = response.json()
 
 contributors = []
 contributor_string = ""
-if reponse.status._code != 200 or len(res) == 0:
+if response.status_code != 200 or len(res) == 0:
     # If there are no reviews we use a default value.
     contributor_string = "no one"
 else:
