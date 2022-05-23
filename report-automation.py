@@ -17,7 +17,7 @@ url = f"https://api.github.com/repos/KTH/devops-course/pulls/${pr_id}/reviews"
 response = requests.get(url)
 print(f"reviews res: ${response.status_code}")
 res = response.json()
-prin(res)
+print(res)
 
 # Start by fetching all closed pull requests
 #url = "https://api.github.com/repos/KTH/devops-course/pulls?state=closed"
