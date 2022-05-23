@@ -54,9 +54,9 @@ plt.xticks(x_pos, bars)
 plt.savefig('topContributors.png')
 
 # Now creat the PDF
-fileName = 'sample.pdf'
-documentTitle = 'sample'
-title = 'Feature Statistics'
+fileName = 'Development_Statistics.pdf'
+documentTitle = 'Development Statistics'
+title = 'Feature Project Statistics'
 subTitle = 'Development Statistics of our Latest Feature'
 textLines = [
     'Top contributors to our latest feature are:',
