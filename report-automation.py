@@ -10,14 +10,10 @@ from reportlab.lib import colors
 import sys
 
 # Get the PR number from the github action
-pr_id = sys.argv[1]; # 0 is the file name
-
-print(f"argv length: ${sys.argv}")
-for arg in sys.argv:
-    print(arg)
+pr_num = sys.argv[1]; # 0 is the file name
 
 # Then fetch the reviews for that PR
-url = f"https://api.github.com/repos/PersonligaPersson/ExecutableTutorialTester/pulls/{pr_id}/reviews"
+url = f"https://api.github.com/repos/PersonligaPersson/ExecutableTutorialTester/pulls/{pr_num}/reviews"
 print(f"Requesting on the url: ${url}")
 response = requests.get(url)
 print(f"reviews res: {response.status_code}")
