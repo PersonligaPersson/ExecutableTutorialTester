@@ -108,7 +108,7 @@ pdf.setFont("arial", 16)
 pdf.drawCentredString(290, 720, subTitle)
 
 # Present the reviewers
-pdf.drawText(f"This feature was reviewed by: {contributor_string}")
+pdf.drawCentredString(290, 670, f"This feature was reviewed by: {contributor_string}")
 
 # drawing a line
 pdf.line(30, 710, 550, 710)
