@@ -19,17 +19,26 @@ response = requests.get(url)
 print(f"reviews res: {response.status_code}")
 res = response.json()
 
+contributors = []
 contributor_string = ""
-if response.status_code != 200 or len(res) == 0:
+if reponse.status._code != 200 or len(res) == 0:
+    # If there are no reviews we use a default value.
     contributor_string = "no one"
-elif len(res) == 1:
-    contributor_string = res[0]['user']['login']
 else:
-    # Store the names of all those who's reviewed the PR
-    for i in range(len(res)-1):
-        contributor_string += f"{res[i]['user']['login']}, "
-    contributor_string = contributor_string[:len(contributor_string)-2]
-    contributor_string += f" and {res[len(res)-1]['user']['login']}"
+    # Otherwise we filter out the unique names.
+    for review in res:
+        user = review['user']['login']
+        if user not in contributors
+            contributors.append(user)
+
+    # Then format the output string
+    if len(contributors) == 1:
+        contributor_string = contributors[0]
+    else:
+        for i in range(len(contributors)-1):
+            contributor_string += f"{contributors[i]}, "
+        contributor_string = contributor_string[:len(contributor_string)-2]
+        contributor_string += f" and {contributors[len(contributors)-1]}"
 
 
 # Start by fetching data from the repository
