@@ -21,8 +21,9 @@ jobs:
       - run: |
           python report-automation.py
       - name: configure user
-        run: git config --global user.email "max.e.persson@live.se"
-        run: git config --global user.name "Bot for Max Persson"
+        run: |
+          git config --global user.email "max.e.persson@live.se"
+          git config --global user.name "Bot for Max Persson"
       - name: stage new files
         run: git add .
       - name: commit new files
