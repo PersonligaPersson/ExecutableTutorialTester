@@ -20,7 +20,7 @@ print(f"reviews res: {response.status_code}")
 res = response.json()
 
 contributor_string = ""
-if response.status_code == 202:
+if response.status_code != 200 or len(res) == 0:
     contributor_string = "no one"
 elif len(res) == 1:
     contributor_string = res[0].user.login
